@@ -47,9 +47,10 @@ class CodeString < String
 
   def to_formatted_s
     string, index = "", 1
-    string << "# language: #{@language}\n"
+    string << "# language: #{language}\n"
+    string << "# encoding: #{encoding}\n"
     for line in self.split(/\n/)
-      string  << index.to_s.rjust(4) + ": " + line
+      string  << index.to_s.rjust(4) + ": " + line + "\n"
       index += 1
     end
     return string

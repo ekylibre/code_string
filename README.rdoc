@@ -1,8 +1,8 @@
-# CodeString
+= CodeString
 
 Class to manipulate code strings.
 
-## Installation
+== Installation
 
 Add this line to your application's Gemfile:
 
@@ -16,15 +16,16 @@ Or install it yourself as:
 
     $ gem install code_string
 
-## Usage
+== Usage
 
    $ "sum = 1 + 5".c
    $ c = "sum = 1 + 5".c(:ruby)
    $ puts c.to_formatted_s
    # language: ruby
+   # encoding: US-ASCII
        1: sum = 1 + 5
 
-## Contributing
+== Contributing
 
 1. Fork it ( https://github.com/burisu/code_string/fork )
 2. Create your feature branch (`git checkout -b my-new-feature`)
