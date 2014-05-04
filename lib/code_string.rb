@@ -23,7 +23,7 @@ class CodeString < String
 
   def +(text)
     if text.is_a?(CodeString)
-      if code.language == text.language
+      if self.language == text.language
         super text
       else
         raise IncompatibleLanguage, "Language #{self.language} is not compatible with language: #{text.language}"
@@ -35,7 +35,7 @@ class CodeString < String
 
   def <<(text)
     if text.is_a?(CodeString)
-      if code.language == text.language
+      if self.language == text.language
         super text
       else
         raise IncompatibleLanguage, "Language #{self.language} is not compatible with language: #{text.language}"

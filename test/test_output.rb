@@ -1,6 +1,6 @@
 require 'helper'
 
-class TestInstanciation < Test::Unit::TestCase
+class TestOutput < Test::Unit::TestCase
 
   def test_inspect_output
     assert_nothing_raised do
