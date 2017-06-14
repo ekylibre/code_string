@@ -1,25 +1,19 @@
 require 'helper'
 
-class TestConcatenation < Test::Unit::TestCase
-
+class TestConcatenation < Minitest::Test
   def test_valid_concatenation
-    assert_nothing_raised do
-      "5 + 3\n".c + "5 + 3".c
-    end
+    "5 + 3\n".c + '5 + 3'.c
 
-    assert_nothing_raised do
-      "5 + 3\n".c + "5 + 3".c(:ruby)
-    end
+    "5 + 3\n".c + '5 + 3'.c(:ruby)
   end
 
   def test_invalid_concatenation
-    assert_raise CodeString::IncompatibleLanguage do
-      "5 + 3\n".c + "5 + 3".c(:javascript)
+    assert_raises CodeString::IncompatibleLanguage do
+      "5 + 3\n".c + '5 + 3'.c(:javascript)
     end
 
-    assert_raise CodeString::IncompatibleLanguage do
-      "5 + 3\n".c(:c) + "5 + 3".c
+    assert_raises CodeString::IncompatibleLanguage do
+      "5 + 3\n".c(:c) + '5 + 3'.c
     end
   end
-
 end

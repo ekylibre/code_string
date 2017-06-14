@@ -2,8 +2,7 @@
 # It permits to secure concantenation
 # Code strings simplifies code displaying
 class CodeString < String
-
-  VERSION = "0.0.0"
+  VERSION = '0.0.1'.freeze
 
   class IncompatibleLanguage < StandardError
   end
@@ -23,10 +22,10 @@ class CodeString < String
 
   def +(text)
     if text.is_a?(CodeString)
-      if self.language == text.language
+      if language == text.language
         super text
       else
-        raise IncompatibleLanguage, "Language #{self.language} is not compatible with language: #{text.language}"
+        raise IncompatibleLanguage, "Language #{language} is not compatible with language: #{text.language}"
       end
     else
       super text
@@ -35,10 +34,10 @@ class CodeString < String
 
   def <<(text)
     if text.is_a?(CodeString)
-      if self.language == text.language
+      if language == text.language
         super text
       else
-        raise IncompatibleLanguage, "Language #{self.language} is not compatible with language: #{text.language}"
+        raise IncompatibleLanguage, "Language #{language} is not compatible with language: #{text.language}"
       end
     else
       super text.to_s
@@ -46,37 +45,27 @@ class CodeString < String
   end
 
   def to_formatted_s
-    string, index = "", 1
+    string = ''
+    index = 1
     string << "# language: #{language}\n"
     string << "# encoding: #{encoding}\n"
-    for line in self.split(/\n/)
-      string  << index.to_s.rjust(4) + ": " + line + "\n"
+    for line in split(/\n/)
+      string << index.to_s.rjust(4) + ': ' + line + "\n"
       index += 1
     end
-    return string
+    string
   end
 
   def inspect
-    self.to_s
+    to_s
   end
 
   def dig(*args)
     options = args.last.is_a?(Hash) ? args.delete_at(-1) : {}
     depth   = args.shift || options[:depth] || 1
-    spacer  = args.shift || options[:spacer] || "  "
-    return (self.strip.gsub(/^/, spacer * depth) + "\n").c(@language)
-  end
-
-end
-
-
-class ::String
-  # Convert a String to a Code fragment
-  def to_code(language = nil)
-    CodeString.new(self, language)
-  end
-
-  def c(language = nil)
-    CodeString.new(self, language)
+    spacer  = args.shift || options[:spacer] || '  '
+    (strip.gsub(/^/, spacer * depth) + "\n").c(@language)
   end
 end
+
+require 'code_string/core_ext'
