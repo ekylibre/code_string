@@ -2,7 +2,7 @@
 # It permits to secure concantenation
 # Code strings simplifies code displaying
 class CodeString < String
-  VERSION = '0.0.1'.freeze
+  VERSION = '0.0.2'.freeze
 
   class IncompatibleLanguage < StandardError
   end

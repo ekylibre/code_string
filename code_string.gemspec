@@ -9,7 +9,7 @@ Gem::Specification.new do |spec|
   spec.email         = ['burisu@oneiros.fr']
   spec.summary       = 'String to manage codes'
   spec.description   = 'Like AS::SafeBuffer, a way to manage code string safely for code generation'
-  spec.homepage      = ''
+  spec.homepage      = 'https://github.com/ekylibre/code_string'
   spec.license       = 'MIT'
 
   spec.files         = `git ls-files -z`.split("\x0")
